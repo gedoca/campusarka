@@ -1,80 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recursos de Aprendizaje</title>
-    <!-- Bootstrap 5 CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand text-white" href="#">Recursos</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav" aria-controls="menuNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menuNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#menu1" data-bs-toggle="tab">Menú 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#menu2" data-bs-toggle="tab">Menú 2</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="#menu3" data-bs-toggle="tab">Menú 3</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container mt-4">
-        <div class="tab-content">
-            <!-- Menú 1 -->
-            <div class="tab-pane fade show active" id="menu1">
-                <h4>Menú 1</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="#" target="_blank">Archivo PDF</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Clase en línea</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Video explicativo</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Audio guía</a></li>
-                </ul>
-            </div>
-            <!-- Menú 2 -->
-            <div class="tab-pane fade" id="menu2">
-                <h4>Menú 2</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="#" target="_blank">Archivo Word</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Clase grabada</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Video tutorial</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Audio explicativo</a></li>
-                </ul>
-            </div>
-            <!-- Menú 3 -->
-            <div class="tab-pane fade" id="menu3">
-                <h4>Menú 3</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="#" target="_blank">Archivo Excel</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Clase interactiva</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Video conferencia</a></li>
-                    <li class="list-group-item"><a href="#" target="_blank">Audio resumen</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campus ARKA</title>
 
-    <!-- Bootstrap 5 JS CDN (for navbar and tabs) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Hacer que la primera pestaña esté activa por defecto
-        document.addEventListener("DOMContentLoaded", function () {
-            var triggerEl = document.querySelector('a[href="#menu1"]');
-            if (triggerEl) {
-                var tab = new bootstrap.Tab(triggerEl);
-                tab.show();
-            }
-        });
-    </script>
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Poppins:wght@300;500&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fefdf9;
+      color: #333;
+    }
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .section {
+      padding: 60px 20px;
+      display: none;
+    }
+    .active-section {
+      display: block;
+    }
+    .nav-link {
+      cursor: pointer;
+    }
+    .logo {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #884d24;
+      text-decoration: none;
+    }
+    .btn-arka {
+      background-color: #884d24;
+      color: #fff;
+      border: none;
+    }
+    .btn-arka:hover {
+      background-color: #a8673d;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header y navegación -->
+  <header class="sticky-top py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a class="logo" href="#">ARKA Campus</a>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link" onclick="mostrarSeccion('clases')">Clases</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarSeccion('libros')">Libros</a></li>
+          <li class="nav-item"><a class="nav-link" onclick="mostrarSeccion('audios')">Audios</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Clases -->
+  <section id="clases" class="section active-section container">
+    <h2 class="mb-4">Clases Virtuales Grabadas</h2>
+    <div class="ratio ratio-16x9">
+      <iframe src="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+    <p class="mt-3">Clase 01 – Introducción al Enfoque Transpersonal</p>
+  </section>
+
+  <!-- Libros -->
+  <section id="libros" class="section container">
+    <h2 class="mb-4">Libros y Artículos en PDF</h2>
+    <div class="mb-3">
+      <h5>PDF: Inteligencia Planetaria</h5>
+      <a href="https://drive.google.com/file/d/1pl-54gCc31_V8NRKh7z6KdauilOBmjse/view?usp=sharing" target="_blank" class="btn btn-arka">Ver o Descargar</a>
+    </div>
+  </section>
+
+  <!-- Audios -->
+  <section id="audios" class="section container">
+    <h2 class="mb-4">Audios de Meditación</h2>
+    <div class="mb-3">
+      <h5>Meditación 01 – Respiración y presencia</h5>
+      <audio controls>
+        <source src="https://docs.google.com/uc?export=download&id=1UXZVXTE1NQNie7PmMnhQiBmDk9r66jtb" type="audio/mp3" />
+        Tu navegador no soporta audio embebido.
+      </audio>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.section').forEach(seccion => {
+        seccion.classList.remove('active-section');
+      });
+      document.getElementById(id).classList.add('active-section');
+    }
+  </script>
+
 </body>
 </html>
