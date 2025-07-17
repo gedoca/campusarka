@@ -59,14 +59,10 @@
       text-align: center;
       background-color: #fefdf9;
     }
-    .modal iframe {
-      width: 100%;
-      height: 400px;
-    }
   </style>
 </head>
-<body>
 
+<body>
   <!-- Bienvenida -->
   <div id="bienvenida">
     <div class="container">
@@ -94,76 +90,104 @@
       </nav>
     </div>
   </header>
-<!-- Modales de clases -->
-<div class="modal fade" id="modalClase1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+<!-- Clases -->
+<section id="clases" class="section container">
+  <h2 class="mb-4">Clases Virtuales Grabadas</h2>
+
+  <!-- Lista de clases -->
+  <div class="list-group">
+
+    <!-- Clase 1 -->
+    <button type="button" class="list-group-item list-group-item-action" 
+            data-bs-toggle="modal" 
+            data-bs-target="#videoModal" 
+            data-video="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview">
+      <strong>Clase 01:</strong> Introducción al Enfoque Transpersonal<br>
+      <small>📅 10 de julio 2025 – 🎓 German Doin</small>
+    </button>
+
+    <!-- Más clases (ejemplo futuro) -->
+    <!--
+    <button type="button" class="list-group-item list-group-item-action" 
+            data-bs-toggle="modal" 
+            data-bs-target="#videoModal" 
+            data-video="LINK_DEL_IFRAME">
+      <strong>Clase 02:</strong> Título de la clase<br>
+      <small>📅 Fecha – 🎓 Docente</small>
+    </button>
+    -->
+
+  </div>
+</section>
+
+<!-- Modal para reproducir video -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel1">Clase 01 – Introducción</h5>
+        <h5 class="modal-title">Clase ARKA</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        <iframe src="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview" allow="autoplay" allowfullscreen></iframe>
+        <div class="ratio ratio-16x9">
+          <iframe id="videoFrame" src="" allow="autoplay" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-<div class="modal fade" id="modalClase2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel2">Clase 02 – Eneagrama</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <iframe src="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview" allow="autoplay" allowfullscreen></iframe>
-      </div>
+  
+  <!-- Libros -->
+  <section id="libros" class="section container">
+    <h2 class="mb-4">Libros y Artículos en PDF</h2>
+    <div class="mb-3">
+      <h5>PDF: Inteligencia Planetaria</h5>
+      <a href="https://drive.google.com/file/d/1pl-54gCc31_V8NRKh7z6KdauilOBmjse/view?usp=sharing" target="_blank" class="btn btn-arka">Ver o Descargar</a>
     </div>
-  </div>
-</div>
+  </section>
 
-<!-- Repetir igual para las clases 03 a 10 cambiando el ID -->
-<section id="libros" class="section container">
-  <h2 class="mb-4">Libros y Artículos en PDF</h2>
-  <ul class="list-group">
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Material 01 – Inteligencia Planetaria
-      <a href="https://drive.google.com/file/d/1pl-54gCc31_V8NRKh7z6KdauilOBmjse/view?usp=sharing" target="_blank" class="btn btn-sm btn-arka">Ver o Descargar</a>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Material 02 – Psicología Transpersonal
-      <a href="#" class="btn btn-sm btn-arka">Ver o Descargar</a>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Material 03 – Enfoque Gestáltico
-      <a href="#" class="btn btn-sm btn-arka">Ver o Descargar</a>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Material 04 – Estados de Conciencia
-      <a href="#" class="btn btn-sm btn-arka">Ver o Descargar</a>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-      Material 05 – Cuerpo y Memoria
-      <a href="#" class="btn btn-sm btn-arka">Ver o Descargar</a>
-    </li>
-  </ul>
-</section>
-<section id="audios" class="section container">
-  <h2 class="mb-4">Audios de Meditación</h2>
-  <div class="row">
-    <div class="col-md-6 mb-4">
-      <h6>Meditación 01 – Respiración</h6>
+  <!-- Audios -->
+  <section id="audios" class="section container">
+    <h2 class="mb-4">Audios de Meditación</h2>
+    <div class="mb-3">
+      <h5>Meditación 01 – Respiración y presencia</h5>
       <audio controls>
         <source src="https://docs.google.com/uc?export=download&id=1UXZVXTE1NQNie7PmMnhQiBmDk9r66jtb" type="audio/mp3" />
+        Tu navegador no soporta audio embebido.
       </audio>
     </div>
-    <div class="col-md-6 mb-4">
-      <h6>Meditación 02 – Anclaje corporal</h6>
-      <audio controls>
-        <source src="https://docs.google.com/uc?export=download&id=1UXZVXTE1NQNie7PmMnhQiBmDk9r66jtb" type="audio/mp3" />
-      </audio>
-    </div>
-    <!-- Repetí lo mismo hasta la 10 cambiando el número y el título -->
-  </div>
-</section>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+  function iniciarCampus() {
+    document.getElementById('bienvenida').style.display = 'none';
+    document.getElementById('navHeader').style.display = 'block';
+    mostrarSeccion('clases');
+  }
+
+  function mostrarSeccion(id) {
+    document.querySelectorAll('.section').forEach(seccion => {
+      seccion.classList.remove('active-section');
+    });
+    document.getElementById(id).classList.add('active-section');
+  }
+
+  // Modal dinámico: insertar video en iframe cuando se abre
+  const videoModal = document.getElementById('videoModal');
+  videoModal.addEventListener('show.bs.modal', event => {
+    const button = event.relatedTarget;
+    const videoURL = button.getAttribute('data-video');
+    const iframe = document.getElementById('videoFrame');
+    iframe.src = videoURL;
+  });
+
+  // Limpiar iframe al cerrar
+  videoModal.addEventListener('hidden.bs.modal', () => {
+    const iframe = document.getElementById('videoFrame');
+    iframe.src = '';
+  });
+</script>
+</body>
+</html>
