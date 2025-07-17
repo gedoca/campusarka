@@ -91,53 +91,41 @@
     </div>
   </header>
 
-<!-- Clases -->
-<section id="clases" class="section container">
-  <h2 class="mb-4">Clases Virtuales Grabadas</h2>
+  <!-- Clases -->
+  <section id="clases" class="section container">
+    <h2 class="mb-4">Clases Virtuales Grabadas</h2>
 
-  <!-- Lista de clases -->
-  <div class="list-group">
+    <div class="list-group">
 
-    <!-- Clase 1 -->
-    <button type="button" class="list-group-item list-group-item-action" 
-            data-bs-toggle="modal" 
-            data-bs-target="#videoModal" 
-            data-video="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview">
-      <strong>Clase 01:</strong> Introducción al Enfoque Transpersonal<br>
-      <small>📅 10 de julio 2025 – 🎓 German Doin</small>
-    </button>
+      <!-- Clase 1 -->
+      <button type="button" class="list-group-item list-group-item-action" 
+              data-bs-toggle="modal" 
+              data-bs-target="#videoModal" 
+              data-video="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview">
+        <strong>Clase 01:</strong> Introducción al Enfoque Transpersonal<br>
+        <small>📅 10 de julio 2025 – 🎓 German Doin</small>
+      </button>
 
-    <!-- Más clases (ejemplo futuro) -->
-    <!--
-    <button type="button" class="list-group-item list-group-item-action" 
-            data-bs-toggle="modal" 
-            data-bs-target="#videoModal" 
-            data-video="LINK_DEL_IFRAME">
-      <strong>Clase 02:</strong> Título de la clase<br>
-      <small>📅 Fecha – 🎓 Docente</small>
-    </button>
-    -->
+    </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- Modal para reproducir video -->
-<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-xl modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Clase ARKA</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <div class="ratio ratio-16x9">
-          <iframe id="videoFrame" src="" allow="autoplay" allowfullscreen></iframe>
+  <!-- Modal para reproducir video -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Clase ARKA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <iframe id="videoFrame" src="" allow="autoplay" allowfullscreen></iframe>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-  
+
   <!-- Libros -->
   <section id="libros" class="section container">
     <h2 class="mb-4">Libros y Artículos en PDF</h2>
@@ -160,34 +148,35 @@
   </section>
 
   <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-  function iniciarCampus() {
-    document.getElementById('bienvenida').style.display = 'none';
-    document.getElementById('navHeader').style.display = 'block';
-    mostrarSeccion('clases');
-  }
+    function iniciarCampus() {
+      document.getElementById('bienvenida').style.display = 'none';
+      document.getElementById('navHeader').style.display = 'block';
+      mostrarSeccion('clases');
+    }
 
-  function mostrarSeccion(id) {
-    document.querySelectorAll('.section').forEach(seccion => {
-      seccion.classList.remove('active-section');
+    function mostrarSeccion(id) {
+      document.querySelectorAll('.section').forEach(seccion => {
+        seccion.classList.remove('active-section');
+      });
+      document.getElementById(id).classList.add('active-section');
+    }
+
+    // Modal dinámico: insertar video en iframe cuando se abre
+    const videoModal = document.getElementById('videoModal');
+    videoModal.addEventListener('show.bs.modal', event => {
+      const button = event.relatedTarget;
+      const videoURL = button.getAttribute('data-video');
+      const iframe = document.getElementById('videoFrame');
+      iframe.src = videoURL;
     });
-    document.getElementById(id).classList.add('active-section');
-  }
 
-  // Modal dinámico: insertar video en iframe cuando se abre
-  const videoModal = document.getElementById('videoModal');
-  videoModal.addEventListener('show.bs.modal', event => {
-    const button = event.relatedTarget;
-    const videoURL = button.getAttribute('data-video');
-    const iframe = document.getElementById('videoFrame');
-    iframe.src = videoURL;
-  });
-
-  // Limpiar iframe al cerrar
-  videoModal.addEventListener('hidden.bs.modal', () => {
-    const iframe = document.getElementById('videoFrame');
-    iframe.src = '';
-  });
-</script>
+    // Limpiar iframe al cerrar
+    videoModal.addEventListener('hidden.bs.modal', () => {
+      const iframe = document.getElementById('videoFrame');
+      iframe.src = '';
+    });
+  </script>
 </body>
 </html>
