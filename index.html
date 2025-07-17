@@ -31,28 +31,54 @@
     }
     .nav-link {
       cursor: pointer;
+      color: #29043d !important;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      text-decoration: underline;
     }
     .logo {
       font-family: 'Raleway', sans-serif;
       font-weight: 600;
       font-size: 1.5rem;
-      color: #884d24;
+      color: #29043d;
       text-decoration: none;
     }
     .btn-arka {
-      background-color: #884d24;
+      background-color: #29043d;
       color: #fff;
       border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
     }
     .btn-arka:hover {
-      background-color: #a8673d;
+      background-color: #3c2060;
+    }
+    #bienvenida {
+      padding: 100px 20px;
+      text-align: center;
+      background-color: #fefdf9;
     }
   </style>
 </head>
 
 <body>
+  <!-- Bienvenida -->
+  <div id="bienvenida">
+    <div class="container">
+      <h1 class="mb-4" style="color: #29043d;">Bienvenid@ al Campus ARKA</h1>
+      <p class="lead mb-4">
+        Este es un espacio digital para acompañarte en tu proceso de formación.  
+        Aquí encontrarás clases grabadas, materiales de lectura y audios de meditación  
+        para seguir profundizando en tu camino de autoconocimiento.  
+        Te invitamos a recorrer este espacio con apertura, presencia y compromiso.
+      </p>
+      <button class="btn btn-arka" onclick="iniciarCampus()">Ingresar al Campus</button>
+    </div>
+  </div>
+
   <!-- Header y navegación -->
-  <header class="sticky-top py-3">
+  <header id="navHeader" class="sticky-top py-3" style="display: none;">
     <div class="container d-flex justify-content-between align-items-center">
       <a class="logo" href="#">ARKA Campus</a>
       <nav>
@@ -66,7 +92,7 @@
   </header>
 
   <!-- Clases -->
-  <section id="clases" class="section active-section container">
+  <section id="clases" class="section container">
     <h2 class="mb-4">Clases Virtuales Grabadas</h2>
     <div class="ratio ratio-16x9">
       <iframe src="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview" allow="autoplay" allowfullscreen></iframe>
@@ -78,7 +104,7 @@
   <section id="libros" class="section container">
     <h2 class="mb-4">Libros y Artículos en PDF</h2>
     <div class="mb-3">
-      <h5>PDF: Inteligencia Planetaria</h5>
+      <h5>PDF: Infancia, Edad Sagrada</h5>
       <a href="https://drive.google.com/file/d/1pl-54gCc31_V8NRKh7z6KdauilOBmjse/view?usp=sharing" target="_blank" class="btn btn-arka">Ver o Descargar</a>
     </div>
   </section>
@@ -97,6 +123,12 @@
 
   <!-- Scripts -->
   <script>
+    function iniciarCampus() {
+      document.getElementById('bienvenida').style.display = 'none';
+      document.getElementById('navHeader').style.display = 'block';
+      mostrarSeccion('clases');
+    }
+
     function mostrarSeccion(id) {
       document.querySelectorAll('.section').forEach(seccion => {
         seccion.classList.remove('active-section');
@@ -104,6 +136,5 @@
       document.getElementById(id).classList.add('active-section');
     }
   </script>
-
 </body>
 </html>
