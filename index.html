@@ -94,30 +94,12 @@
       </nav>
     </div>
   </header>
-<!-- Clases -->
-<section id="clases" class="section container">
-  <h2 class="mb-4">Clases Virtuales Grabadas</h2>
-  <div class="list-group">
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase1">Clase 01 – Introducción</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase2">Clase 02 – Eneagrama</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase3">Clase 03 – Cuerpo y Emoción</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase4">Clase 04 – Estados Ampliados</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase5">Clase 05 – La Presencia</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase6">Clase 06 – Vínculos</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase7">Clase 07 – Mente y Pensamiento</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase8">Clase 08 – Subpersonalidades</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase9">Clase 09 – Trauma y Reparación</a>
-    <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#modalClase10">Clase 10 – Cierre del Ciclo</a>
-  </div>
-</section>
-
-<!-- Modales para clases -->
-${[...Array(10)].map((_, i) => `
-<div class="modal fade" id="modalClase${i+1}" tabindex="-1" aria-labelledby="modalLabel${i+1}" aria-hidden="true">
+<!-- Modales de clases -->
+<div class="modal fade" id="modalClase1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel${i+1}">Clase 0${i+1}</h5>
+        <h5 class="modal-title" id="modalLabel1">Clase 01 – Introducción</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
@@ -125,10 +107,23 @@ ${[...Array(10)].map((_, i) => `
       </div>
     </div>
   </div>
-</div>`).join('')}
-<!-- Fin modales -->
+</div>
 
-<!-- Libros -->
+<div class="modal fade" id="modalClase2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel2">Clase 02 – Eneagrama</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <iframe src="https://drive.google.com/file/d/16uCgvo3-DarOiJ7JjIXrjLU_QzXHr57M/preview" allow="autoplay" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Repetir igual para las clases 03 a 10 cambiando el ID -->
 <section id="libros" class="section container">
   <h2 class="mb-4">Libros y Artículos en PDF</h2>
   <ul class="list-group">
@@ -154,18 +149,21 @@ ${[...Array(10)].map((_, i) => `
     </li>
   </ul>
 </section>
-
-<!-- Audios -->
 <section id="audios" class="section container">
   <h2 class="mb-4">Audios de Meditación</h2>
   <div class="row">
-    ${[...Array(10)].map((_, i) => `
     <div class="col-md-6 mb-4">
-      <h6>Meditación 0${i+1} – Práctica ${i+1}</h6>
+      <h6>Meditación 01 – Respiración</h6>
       <audio controls>
         <source src="https://docs.google.com/uc?export=download&id=1UXZVXTE1NQNie7PmMnhQiBmDk9r66jtb" type="audio/mp3" />
-        Tu navegador no soporta audio embebido.
       </audio>
-    </div>`).join('')}
+    </div>
+    <div class="col-md-6 mb-4">
+      <h6>Meditación 02 – Anclaje corporal</h6>
+      <audio controls>
+        <source src="https://docs.google.com/uc?export=download&id=1UXZVXTE1NQNie7PmMnhQiBmDk9r66jtb" type="audio/mp3" />
+      </audio>
+    </div>
+    <!-- Repetí lo mismo hasta la 10 cambiando el número y el título -->
   </div>
 </section>
