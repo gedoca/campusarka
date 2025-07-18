@@ -59,6 +59,16 @@
       text-align: center;
       background-color: #fefdf9;
     }
+	.audiotitulo {
+	margin: 10px;
+    float: left;
+	}	
+	.player {
+	width: 70%;
+    float: left;
+    margin-left: 20px;
+	}
+	
   </style>
 </head>
 
@@ -161,15 +171,31 @@
   <h2 class="mb-4">Libros y Artículos en PDF</h2>
 
   <div class="list-group">
-
     <!-- Libro 1 -->
+    <a href="https://drive.google.com/file/d/1B5Rurz2ZkHBGqQbOSb7QJZ5cHeqfUwju/view?usp=drive_link" 
+       target="_blank" 
+       class="list-group-item list-group-item-action">
+      <strong>El Enfoque Gestaltico - Testimonios de Terapia</strong><br>
+      <small>📄 Fritz Perls - PDF (Descarga/Visualización)</small>
+    </a><br />
+        <!-- Libro 2 -->
+    <a href="https://drive.google.com/file/d/1XpYfxX4FgaZp1q-LVRjqo6s0SyVHiyNk/view?usp=drive_link" 
+       target="_blank" 
+       class="list-group-item list-group-item-action">
+      <strong>Esquizitofrenia</strong><br>
+      <small>📄 Luis Enrrique Mejia – PDF (Descarga/Visualización)</small>
+    </a><br />
+    <!-- Libro 3 -->
     <a href="https://drive.google.com/file/d/1pl-54gCc31_V8NRKh7z6KdauilOBmjse/view?usp=drive_link" 
        target="_blank" 
        class="list-group-item list-group-item-action">
       <strong>Infancia, la edad sagrada</strong><br>
       <small>📄 Evania Reichert – PDF (Descarga/Visualización)</small>
-    </a>
+    </a><br />
 
+
+
+    
     <!-- Más libros (ejemplo) -->
     <!--
     <a href="LINK_DEL_PDF" target="_blank" class="list-group-item list-group-item-action">
@@ -189,31 +215,44 @@
 
     <!-- Audio 1 -->
     <div class="list-group-item">
-      <strong>Conciencia corporal 01</strong><br>
-      <small>🎧 Voz: María Paulina Rubio</small>
-      <audio controls class="mt-2 w-100">
-        <source src="audios/conciencia-01.mp3" type="audio/mp3" />
-        Tu navegador no soporta audio embebido.
-      </audio>
-    </div>
-<br />
+		<div class="audiotitulo">
+			<strong>Conciencia corporal 01</strong><br>
+			<small>🎧 Voz: María Paulina Rubio</small>
+		</div>
+		<div class="player">
+			<audio controls class="mt-2 w-100">
+			<source src="audios/conciencia-01.mp3" type="audio/mp3" />
+			Tu navegador no soporta audio embebido.
+			</audio>
+		</div>
+	</div>
+	<br />
+    <!-- Audio 2 -->
    <div class="list-group-item">
-      <strong>Atención plena 01</strong><br>
-      <small>🎧 Voz: María Paulina Rubio</small>
-      <audio controls class="mt-2 w-100">
-        <source src="audios/atencion-01.mp3" type="audio/mp3" />
-        Tu navegador no soporta audio embebido.
-      </audio>
+		<div class="audiotitulo">
+		  <strong>Atención plena 01</strong><br>
+		  <small>🎧 Voz: María Paulina Rubio</small>
+		</div>
+		<div class="player">
+			<audio controls class="mt-2 w-100">
+			<source src="audios/atencion-01.mp3" type="audio/mp3" />
+			Tu navegador no soporta audio embebido.
+			</audio>
+	    </div>
     </div>
     <!-- Más audios (ejemplo) -->
     <!--
-    <div class="list-group-item">
-      <strong>Meditación 02 – Nombre</strong><br>
-      <small>🎧 Voz: Facilitador/a</small>
-      <audio controls class="mt-2 w-100">
-        <source src="https://docs.google.com/uc?export=download&id=" type="audio/mp3" />
-        Tu navegador no soporta audio embebido.
-      </audio>
+	<div class="list-group-item">
+		<div class="audiotitulo">
+		  <strong>Titulo del Capitulo 01</strong><br>
+		  <small>🎧 Voz: Facilitador</small>
+		</div>
+		<div class="player">
+			<audio controls class="mt-2 w-100">
+			<source src="AUDIOLINK" type="audio/mp3" />
+			Tu navegador no soporta audio embebido.
+			</audio>
+	    </div>
     </div>
     -->
 
