@@ -101,6 +101,30 @@
     </div>
   </header>
 
+<!-- Inicio -->
+<section id="inicio" class="section container">
+  <h2 class="mb-4">Bienvenida al Campus ARKA</h2>
+
+  <p>
+    Este espacio está diseñado para acompañarte en tu recorrido formativo.  
+    Aquí encontrarás las clases virtuales grabadas, materiales de lectura y audios de meditación  
+    para que puedas profundizar tu proceso de manera autogestiva y a tu propio ritmo.
+  </p>
+
+  <p>
+    Te sugerimos comenzar revisando las clases virtuales disponibles y luego explorar los libros y audios que acompañan cada etapa del recorrido.
+    Este espacio se irá actualizando con nuevos recursos.
+  </p>
+
+  <ul>
+    <li>📺 <strong>Clases:</strong> Grabaciones de los encuentros virtuales, organizadas por fecha.</li>
+    <li>📚 <strong>Libros y artículos:</strong> Materiales de lectura que acompañan los módulos.</li>
+    <li>🎧 <strong>Audios:</strong> Meditaciones y propuestas de práctica personal.</li>
+  </ul>
+
+
+</section>
+
   <!-- Clases -->
   <section id="clases" class="section container">
     <h2 class="mb-4">Clases Virtuales Grabadas</h2>
@@ -228,7 +252,7 @@
 	</div>
 	<br />
     <!-- Audio 2 -->
-   <div class="list-group-item">
+   <div class="list-group-item" style="display: none;">
 		<div class="audiotitulo">
 		  <strong>Atención plena 01</strong><br>
 		  <small>🎧 Voz: María Paulina Rubio</small>
@@ -265,7 +289,7 @@
     function iniciarCampus() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('navHeader').style.display = 'block';
-      mostrarSeccion('clases');
+      mostrarSeccion('inicio');
     }
 
     function mostrarSeccion(id) {
