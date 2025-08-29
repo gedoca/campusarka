@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>ARKA – Acceso</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Estilos mínimos -->
+  <style>
+    :root { --bg:#0f0a1a; --panel:#1c1230; --text:#f0eaff; --accent:#7a42ff; }
+    html,body { margin:0; font-family:system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--text); height:100%; }
+    .gate, .content { min-height:100dvh; display:grid; place-items:center; }
+    .card { width:min(92vw, 440px); background:var(--panel); padding:22px; border-radius:14px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+    h1 { margin:0 0 10px; font-size:1.4rem; }
+    p { opacity:.85; margin:.2rem 0 .8rem; line-height:1.35; }
+    label { font-size:.9rem; opacity:.9; display:block; margin:.6rem 0 .35rem; }
+    input { width:100%; padding:12px 14px; border:1px solid #31214f; background:#150c26; color:var(--text); border-radius:10px; outline:none; }
+    input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(122,66,255,.25); }
+    button { margin-top:.9rem; width:100%; padding:12px 14px; border:none; border-radius:10px; color:white; background:var(--accent); font-weight:600; cursor:pointer; }
+    button[disabled] { opacity:.6; cursor:not-allowed; }
+    .row { display:flex; gap:10px; }
+    .row > * { flex:1; }
+    .msg { margin-top:.6rem; font-size:.9rem; }
+    .ok { color:#9cffb4; }
+    .err { color:#ff9c9c; }
+    small { display:block; opacity:.6; margin-top:.6rem; font-size:.8rem; }
+    /* Ocultar el contenido protegido hasta desbloquear */
+    .content { display:none; }
+  </style>
+
+  <!-- EmailJS SDK (cliente) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Inicializa EmailJS (reemplaza por tu PUBLIC KEY)
+    document.addEventListener('DOMContentLoaded', function() {
+      emailjs.init("YOUR_PUBLIC_KEY_XXXX");
+    });
+  </script>
+</head>
+<body>
+
+  <!-- Gate -->
+  <section class="gate">
+    <div class="card">
+      <h1>Acceso ARKA</h1>
+      <p>Ingresa tu email. Si está en la lista, te enviaremos un código de 4 dígitos.</p>
+
+      <form id="emailForm">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="tu@email.com" required>
+        <button id="sendBtn" type="submit">Enviar código</button>
+        <div id="emailMsg" class="msg"></div>
+      </form>
+
+      <form id="codeForm" style="display:none;">
+        <div class="row">
+          <div>
+            <label for="code">Código</label>
+            <input id="code" type="text" inputmode="numeric" maxlength="4" placeholder="____" required>
+          </div>
+        </div>
+        <button id="unlockBtn" type="submit">Desbloquear</button>
+        <div id="codeMsg" class="msg"></div>
+        <small>¿No te llegó? Revisa spam o vuelve a enviarlo con tu email.</small>
+      </form>
+
+      <small>Este acceso es informativo y no garantiza seguridad real.</small>
+    </div>
+  </section>
+
+  <!-- Contenido protegido -->
+  <section id="protected" class="content">
+    <div class="card">
+      <h1>Bienvenid@ al Campus ARKA</h1>
+      <p>Aquí va tu página completa: enlaces, clases, materiales, etc.</p>
+      <!-- TODO: Reemplaza por tu contenido real -->
+    </div>
+  </section>
+
+  <script>
+    /*********** CONFIGURACIÓN “TEATRALMENTE SEGURA” ***********/
+    // Lista de correos permitidos (editable aquí)
+    const ALLOWED_EMAILS = [
+      "giordanna@example.com",
+      "german@example.com",
+      "allegra@example.com",
+      // ...agrega los tuyos
+    ];
+
+    // Código de 4 dígitos “público” (queda en el HTML)
+    const ACCESS_CODE = "4729";
+
+    // Identificadores de EmailJS (reemplaza por los tuyos)
+    const EMAILJS_SERVICE_ID = "service_xxxx";
+    const EMAILJS_TEMPLATE_ID = "template_xxxx";
+    // En tu template, usa variables: to_email, code
+
+    // Rate limit sencillo para evitar spam accidental
+    const COOLDOWN_MS = 45_000;
+    let lastSendAt = 0;
+
+    // UI refs
+    const emailForm = document.getElementById('emailForm');
+    const emailInput = document.getElementById('email');
+    const emailMsg = document.getElementById('emailMsg');
+    const sendBtn = document.getElementById('sendBtn');
+
+    const codeForm = document.getElementById('codeForm');
+    const codeInput = document.getElementById('code');
+    const codeMsg = document.getElementById('codeMsg');
+    const unlockBtn = document.getElementById('unlockBtn');
+
+    const gateSection = document.querySelector('.gate');
+    const protectedSection = document.getElementById('protected');
+
+    // Helper: mensaje
+    function showMsg(el, text, type='ok') {
+      el.textContent = text;
+      el.className = `msg ${type}`;
+    }
+
+    // 1) Enviar código
+    emailForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      emailMsg.textContent = "";
+      const email = emailInput.value.trim().toLowerCase();
+
+      // “Chequeo” de pertenencia a lista
+      const isAllowed = ALLOWED_EMAILS.map(x => x.toLowerCase()).includes(email);
+
+      // Tono sutil: no revelar lista (aunque esté en el HTML)
+      if (!isAllowed) {
+        showMsg(emailMsg, "Si tu correo está en la lista, recibirás un código en unos instantes.", "err");
+        codeForm.style.display = "none";
+        return;
+      }
+
+      // Rate limit
+      const now = Date.now();
+      if (now - lastSendAt < COOLDOWN_MS) {
+        const secs = Math.ceil((COOLDOWN_MS - (now - lastSendAt)) / 1000);
+        showMsg(emailMsg, `Espera ${secs}s para reenviar.`, "err");
+        return;
+      }
+
+      // Deshabilitar mientras envía
+      sendBtn.disabled = true;
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: email,
+          code: ACCESS_CODE
+        });
+        lastSendAt = Date.now();
+        showMsg(emailMsg, "Código enviado. Revisa tu bandeja (y spam).", "ok");
+        codeForm.style.display = "block";
+        codeInput.focus();
+      } catch (err) {
+        showMsg(emailMsg, "No se pudo enviar el email ahora. Intenta más tarde.", "err");
+        console.error(err);
+      } finally {
+        sendBtn.disabled = false;
+      }
+    });
+
+    // 2) Validar código y desbloquear
+    codeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      codeMsg.textContent = "";
+      const entered = codeInput.value.trim();
+
+      if (entered === ACCESS_CODE) {
+        showMsg(codeMsg, "Acceso concedido.", "ok");
+        // Mostrar contenido protegido
+        gateSection.style.display = "none";
+        protectedSection.style.display = "grid";
+        // Opcional: limpiar inputs
+        codeInput.value = "";
+      } else {
+        showMsg(codeMsg, "Código incorrecto.", "err");
+      }
+    });
+
+    // Mejora UX: Enter en el campo código envía el form
+    codeInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') codeForm.requestSubmit();
+    });
+  </script>
+</body>
+</html>
